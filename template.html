@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)http://www.boogdesign.com/examples/export.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Test Export</title>
+<script>
+    function exportData() {
+        var data = '';
+        data+="{{ column_str }}\n"
+        for (var i=0;i<{{data_list|length}};i++) {
+            var sep = '';
+            for (var j=0;j<{{column_len}};j++) {
+                data +=  sep + document.getElementById(i + '_' + j).value;
+                sep = ',';
+            }
+            data += '\r\n';
+        }
+        var exportLink = document.createElement('a');
+        exportLink.setAttribute('href', 'data:text/csv;base64,' + window.btoa(data));
+        exportLink.appendChild(document.createTextNode('test.csv'));
+        document.getElementById('results').appendChild(exportLink);
+    }
+</script>
+</head>
+<body>
+    {% for item in data_list %}    
+    <img src="{{item.img}}" style="width:2000;height:200px;">
+    <li type="str" id="{{item.row_jid}}" value="{{item.row_jid}}">
+    id: {{item.id}},
+    slice: {{item.slice}}<br>
+    use: <input type="str" id="{{item.use_jid}}" value="{{item.use}}">,
+    comment: <input type="str" id="{{item.comment_jid}}" value="{{item.comment}}">,
+    </li>
+    <br>
+    <hr>
+    <br>
+    {% endfor %}
+    <button onclick="exportData()">Export as CSV</button>
+    <div id="results"><a href="data:text/csv;base64,MSwxMjMsNCwzDQoxLDIsMyw0DQo=">test.csv</a></div>
+
+</body></html>
