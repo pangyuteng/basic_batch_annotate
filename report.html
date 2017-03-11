@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)http://www.boogdesign.com/examples/export.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Test Export</title>
+<script>
+    function exportData() {
+        var data = '';
+        data+="row_jid,use_jid,comment_jid\n"
+        for (var i=0;i<6;i++) {
+            var sep = '';
+            for (var j=0;j<3;j++) {
+                data +=  sep + document.getElementById(i + '_' + j).value;
+                sep = ',';
+            }
+            data += '\r\n';
+        }
+        var exportLink = document.createElement('a');
+        exportLink.setAttribute('href', 'data:text/csv;base64,' + window.btoa(data));
+        exportLink.appendChild(document.createTextNode('test.csv'));
+        document.getElementById('results').appendChild(exportLink);
+    }
+</script>
+</head>
+<body>
+        
+    <img src="img\abby_15.png" style="width:2000;height:200px;">
+    <li type="str" id="0_0" value="0_0">
+    id: abby,
+    slice: 15<br>
+    use: <input type="str" id="0_1" value="nan">,
+    comment: <input type="str" id="0_2" value="nan">,
+    </li>
+    <br>
+    <hr>
+    <br>
+        
+    <img src="img\abby_23.png" style="width:2000;height:200px;">
+    <li type="str" id="1_0" value="1_0">
+    id: abby,
+    slice: 23<br>
+    use: <input type="str" id="1_1" value="nan">,
+    comment: <input type="str" id="1_2" value="nan">,
+    </li>
+    <br>
+    <hr>
+    <br>
+        
+    <img src="img\bob_1.png" style="width:2000;height:200px;">
+    <li type="str" id="2_0" value="2_0">
+    id: bob,
+    slice: 1<br>
+    use: <input type="str" id="2_1" value="nan">,
+    comment: <input type="str" id="2_2" value="nan">,
+    </li>
+    <br>
+    <hr>
+    <br>
+        
+    <img src="img\chen_3.png" style="width:2000;height:200px;">
+    <li type="str" id="3_0" value="3_0">
+    id: chen,
+    slice: 3<br>
+    use: <input type="str" id="3_1" value="nan">,
+    comment: <input type="str" id="3_2" value="nan">,
+    </li>
+    <br>
+    <hr>
+    <br>
+        
+    <img src="img\detra_5.png" style="width:2000;height:200px;">
+    <li type="str" id="4_0" value="4_0">
+    id: detra,
+    slice: 5<br>
+    use: <input type="str" id="4_1" value="nan">,
+    comment: <input type="str" id="4_2" value="nan">,
+    </li>
+    <br>
+    <hr>
+    <br>
+        
+    <img src="img\detra_50.png" style="width:2000;height:200px;">
+    <li type="str" id="5_0" value="5_0">
+    id: detra,
+    slice: 50<br>
+    use: <input type="str" id="5_1" value="nan">,
+    comment: <input type="str" id="5_2" value="nan">,
+    </li>
+    <br>
+    <hr>
+    <br>
+    
+    <button onclick="exportData()">Export as CSV</button>
+    <div id="results"><a href="data:text/csv;base64,MSwxMjMsNCwzDQoxLDIsMyw0DQo=">test.csv</a></div>
+
+</body></html>
